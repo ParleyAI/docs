@@ -20,9 +20,10 @@
                     {
                         "group": "Get Started",
                         "pages": [
-                            "index",
-                            "quickstart",
-                            "development"
+                            "get-started/quickstart",
+                            "get-started/installation",
+                            "get-started/chat",
+                            "get-started/dashboard"
                         ]
                     }
                 ]
