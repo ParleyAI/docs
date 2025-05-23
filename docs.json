@@ -17,9 +17,14 @@
                 "dropdown": "Documentation",
                 "icon": "book-open",
                 "pages": [
-                    "index",
-                    "quickstart",
-                    "development"
+                    {
+                        "group": "Get Started",
+                        "pages": [
+                            "index",
+                            "quickstart",
+                            "development"
+                        ]
+                    }
                 ]
             },
             {
