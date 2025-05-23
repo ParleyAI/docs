@@ -56,20 +56,21 @@
       }
     ],
     "global": {
+      "dropdowns": [
+        {
+          "dropdown": "Drop",
+          "href": "https://docs.parleyai.net/changelog"
+        }
+      ],
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
+          "anchor": "Changelog",
+          "href": "https://docs.parleyai.net/changelog",
           "icon": "book-open-cover"
         },
         {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
-        },
-        {
           "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
+          "href": "https://parleyai.net/blog",
           "icon": "newspaper"
         }
       ]
