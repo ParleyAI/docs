@@ -34,16 +34,7 @@
                     "changelog"
                 ]
             }
-        ],
-        "global": {
-            "anchors": [
-                {
-                    "anchor": "Blog",
-                    "href": "https://parleyai.net/blog",
-                    "icon": "newspaper"
-                }
-            ]
-        }
+        ]
     },
     "logo": {
         "light": "/logo-long.png",
