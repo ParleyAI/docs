@@ -25,12 +25,18 @@
                             "get-started/chat",
                             "get-started/dashboard"
                         ]
+                    },
+                    {
+                        "group": "Installation",
+                        "pages": [
+                            "installation/nextjs"
+                        ]
                     }
                 ]
             },
             {
                 "dropdown": "Changelog",
-                "icon": "book-open",
+                "icon": "clock",
                 "pages": [
                     "changelog"
                 ]
