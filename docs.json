@@ -1,102 +1,66 @@
 {
-  "$schema": "https://mintlify.com/docs.json",
-  "theme": "maple",
-  "name": "ParleyAI Documentations",
-  "colors": {
-    "primary": "#818cf9",
-    "light": "#818cf9",
-    "dark": "#818cf9"
-  },
-  "favicon": "/favicon.ico",
-  "navigation": {
-    "tabs": [
-      {
-        "tab": "Guides",
-        "groups": [
-          {
-            "group": "Get Started",
-            "pages": [
-              "index",
-              "quickstart",
-              "development"
+    "$schema": "https://mintlify.com/docs.json",
+    "theme": "maple",
+    "name": "ParleyAI Documentations",
+    "colors": {
+        "primary": "#818cf9",
+        "light": "#818cf9",
+        "dark": "#818cf9"
+    },
+    "icons": {
+        "library": "lucide"
+    },
+    "favicon": "/favicon.ico",
+    "navigation": {
+        "dropdowns": [
+            {
+                "dropdown": "Documentation",
+                "icon": "book-open",
+                "pages": [
+                    "index",
+                    "quickstart",
+                    "development"
+                ]
+            },
+            {
+                "dropdown": "Changelog",
+                "icon": "book-open",
+                "pages": [
+                    "changelog"
+                ]
+            }
+        ],
+        "global": {
+            "anchors": [
+                {
+                    "anchor": "Blog",
+                    "href": "https://parleyai.net/blog",
+                    "icon": "newspaper"
+                }
             ]
-          },
-          {
-            "group": "Essentials",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API Reference",
-        "groups": [
-          {
-            "group": "API Documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint Examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
-          }
-        ]
-      }
-    ],
-    "global": {
-      "dropdowns": [
-        {
-          "dropdown": "Drop",
-          "href": "https://docs.parleyai.net/changelog"
         }
-      ],
-      "anchors": [
-        {
-          "anchor": "Changelog",
-          "href": "https://docs.parleyai.net/changelog",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://parleyai.net/blog",
-          "icon": "newspaper"
+    },
+    "logo": {
+        "light": "/logo-long.png",
+        "dark": "/logo-long.png"
+    },
+    "navbar": {
+        "links": [
+            {
+                "label": "Support",
+                "href": "mailto:support@parleyai.net"
+            }
+        ],
+        "primary": {
+            "type": "button",
+            "label": "Dashboard",
+            "href": "https://parleyai.net/dashboard"
         }
-      ]
+    },
+    "footer": {
+        "socials": {
+            "x": "https://x.com/parley_ai",
+            "github": "https://github.com/ParleyAI"
+        }
     }
-  },
-  "logo": {
-    "light": "/logo-long.png",
-    "dark": "/logo-long.png"
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:support@parleyai.net"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://parleyai.net/dashboard"
-    }
-  },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/parley_ai",
-      "github": "https://github.com/ParleyAI"
-    }
-  }
 }
