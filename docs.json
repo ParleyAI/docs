@@ -29,7 +29,8 @@
                     {
                         "group": "Installation",
                         "pages": [
-                            "installation/nextjs"
+                            "installation/nextjs",
+                            "installation/manual"
                         ]
                     }
                 ]
