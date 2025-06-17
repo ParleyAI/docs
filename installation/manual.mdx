@@ -6,3 +6,89 @@ description: "If you wanted to install Parley manually into your site, you can f
 <Warning>
   Manual installation required minimum knowledge of coding skills, and how your code works
 </Warning>
+
+Current widget as 17/06/2025 only requiring simple token to open Parley's widget, as simple as 
+
+```bash
+https://www.parleyai.net/widget?token=product-token
+```
+
+The main point of opening widget is adding an iframe then pointing into that url, like this
+
+```typescript
+const iframe = document.createElement('iframe');
+iframe.src = `https://www.parleyai.net/widget?token=${token}`;
+iframe.style.cssText = 'position:fixed;bottom:20px;right:20px;width:350px;height:500px;border:none;';
+document.body.appendChild(iframe);
+```
+
+After that you only need to listen into window's message event
+
+```typescript
+window.addEventListener('message', (event) => {
+        const data = event.data as {
+            secretKey: string;
+            type: string;
+            message: string;
+            data: {
+                price: number;
+                accepted: boolean;
+            }
+        };
+
+        switch (data.type) {
+            case "accepted":
+                // handle accepted negotiation
+                break;
+
+            case "message":
+                // handle message event in widget
+                break;
+
+            case "widget-close":
+				// this used for removing the widget
+                document.body.removeChild(iframe);
+                break;
+        }
+    });
+```
+
+Currently as 17/06/2025 still only 3 event that Parley's widget return, will going add more later, also the full code is like this
+
+```typescript
+const iframe = document.createElement('iframe');
+iframe.src = `https://www.parleyai.net/widget?token=${token}`;
+iframe.style.cssText = 'position:fixed;bottom:20px;right:20px;width:350px;height:500px;border:none;';
+document.body.appendChild(iframe);
+
+window.addEventListener('message', (event) => {
+        const data = event.data as {
+            secretKey: string;
+            type: string;
+            message: string;
+            data: {
+                price: number;
+                accepted: boolean;
+            }
+        };
+
+        switch (data.type) {
+            case "accepted":
+                // handle accepted negotiation
+                break;
+
+            case "message":
+                // handle message event in widget
+                break;
+
+            case "widget-close":
+				// this used for removing the widget
+                document.body.removeChild(iframe);
+                break;
+        }
+    });
+```
+
+<Danger>
+  As i mentioned before, you need to know **how your code works **becareful of sending transaction from client side, since its can be used as hacker to making fake transaction
+</Danger>
