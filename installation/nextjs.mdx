@@ -2,3 +2,165 @@
 title: "Nextjs"
 description: "Learn how to add Parley into your Nextjs site"
 ---
+
+<Warning>
+  Make sure you already have Parley account and created your first project
+</Warning>
+
+Before you start, you need to install Parley's npm package first
+
+```bash
+npm i @parleyai/nodejs-sdk
+```
+
+If you are using PNPM you can use this
+
+```bash
+pnpm add @parleyai/nodejs-sdk
+```
+
+---
+
+Lets say you already has a page that has this
+
+```typescript page.tsx
+"use client"
+
+import { Button } from '@/components/ui/button'
+import { Check } from 'lucide-react'
+
+export default function Pricing() {
+    return (
+        <section className="py-16 md:py-32 flex justify-center items-center bg-gray-50">
+            <div className="bg-white rounded-lg shadow-lg p-8 max-w-sm w-full">
+                <h2 className="text-2xl font-bold mb-4 text-center">Pro Plan</h2>
+                <p className="text-4xl font-extrabold text-center text-blue-600 mb-2">$19<span className="text-lg font-normal">/mo</span></p>
+                <ul className="mb-6 space-y-2">
+                    <li className="flex items-center">
+                        <Check className="w-5 h-5 text-green-500 mr-2" />
+                        Unlimited Projects
+                    </li>
+                    <li className="flex items-center">
+                        <Check className="w-5 h-5 text-green-500 mr-2" />
+                        Priority Support
+                    </li>
+                    <li className="flex items-center">
+                        <Check className="w-5 h-5 text-green-500 mr-2" />
+                        Advanced Analytics
+                    </li>
+                </ul>
+                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded">
+                    Buy Now
+                </Button>
+            </div>
+        </section>
+    )
+}
+```
+
+We can add a new function that called `initNegotiate` it's used for calling the widget for your site and add `initWidget` functions from `@parleyai/nodejs-sdk`
+
+```typescript page.tsx
+"use client"
+
+import { Button } from '@/components/ui/button'
+import { Check } from 'lucide-react'
+import { initWidget } from '@parleyai/nodejs-sdk'
+
+export default function Pricing() {
+    function initNegotiate() {
+        initWidget({
+            token: "your product token",
+            onAccept: (data) => {
+                // Handle the acceptance of the negotiation
+            }
+        })
+    }
+
+    // remaining code
+}
+```
+
+Now we can handle when the negotiation is accepted in `onAccept` callback
+
+```typescript page.tsx
+"use client"
+
+import { Button } from '@/components/ui/button'
+import { Check } from 'lucide-react'
+import { initWidget } from '@parleyai/nodejs-sdk'
+import { useState } from 'react'
+
+export default function Pricing() {
+    const [acceptedPrice, setAcceptedPrice] = useState<number>()
+
+    function initNegotiate() {
+        initWidget({
+            token: "your product token",
+            onAccept: (data) => {
+                setAcceptedPrice(data.data.price)
+            }
+        })
+    }
+
+	// remaining code
+}
+```
+
+You can also put the price into your frontend too, like this
+
+```typescript page.tsx
+"use client"
+
+import { Button } from '@/components/ui/button'
+import { Check } from 'lucide-react'
+import { initWidget } from '@parleyai/nodejs-sdk'
+import { useState } from 'react'
+
+export default function Pricing() {
+    const [acceptedPrice, setAcceptedPrice] = useState<number>()
+
+    function initNegotiate() {
+        initWidget({
+            token: "your product token",
+            onAccept: (data) => {
+                setAcceptedPrice(data.data.price)
+            }
+        })
+    }
+
+    return (
+        <section className="py-16 md:py-32 flex justify-center items-center bg-gray-50">
+            <div className="bg-white rounded-lg shadow-lg p-8 max-w-sm w-full">
+                <h2 className="text-2xl font-bold mb-4 text-center">Pro Plan</h2>
+                <p className="text-4xl font-extrabold text-center text-blue-600 mb-2">{
+                    acceptedPrice ? `$${acceptedPrice}` : "$19"
+                }<span className="text-lg font-normal">/mo</span></p>
+                <ul className="mb-6 space-y-2">
+                    <li className="flex items-center">
+                        <Check className="w-5 h-5 text-green-500 mr-2" />
+                        Unlimited Projects
+                    </li>
+                    <li className="flex items-center">
+                        <Check className="w-5 h-5 text-green-500 mr-2" />
+                        Priority Support
+                    </li>
+                    <li className="flex items-center">
+                        <Check className="w-5 h-5 text-green-500 mr-2" />
+                        Advanced Analytics
+                    </li>
+                </ul>
+                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded" onClick={initNegotiate}>
+                    Buy Now
+                </Button>
+            </div>
+        </section>
+    )
+}
+```
+
+With that you already installed Parley into your site\!, and after that you can handle `onAccept` of your own, like calling a server actions
+
+<Danger>
+  Never change or make transaction in client side area, always use server actions https://nextjs.org/docs/app/guides/forms#passing-additional-arguments
+</Danger>
